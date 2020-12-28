@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport"
+        content="width=device-width,minimum-scale=1,initial-scale=1">
+  <title>JavaScript Browser Library Pattern</title>
+</head>
+<body>
+
+  <h1>JavaScript Browser Library Pattern</h1>
+  <p>
+    Find this code with a full explanation at the <a href="https://github.com/aprothman/js-blip">js-blip</a> repository on GitHub.
+  </p>
+  <p>
+    We use the API that we've exposed in our bundled library to get 2 class instances: a Shop and a Customer.
+  </p>
+
+  <!-- JS-generated output will be added here. -->
+  <pre class="demo"><code class="output"></code></pre>
+
+  <!-- This is how our bundled library's api might be accessed from an ES module. -->
+  <script type="module">
+    import {
+      Shop,
+      Customer,
+    } from "./build/JsBlip.js";
+
+    const output = document.getElementsByClassName('output')[0];
+    output.innerText = '';
+
+    function printOut(text) {
+      output.innerText += `${text}\n\n`;
+    }
+
+    const shop = new Shop();
+    shop.connect();
+    const customer = shop.getCustomer('id_0');
+    
+    printOut(JSON.stringify(shop, null, 2));
+    printOut(JSON.stringify(customer, null, 2));
+  </script>
+
+</body>
+</html>
