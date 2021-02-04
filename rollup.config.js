@@ -17,13 +17,19 @@ const rollupConfig = {
       throwOnError: true,
       throwOnWarning: true,
     }),
-    // Default to 'production'. Minify the result unless we're in 'development'.
+    // Default to 'production'
     replace({
       ENV: JSON.stringify(process.env.NODE_ENV || 'production'),
     }),
-    (process.env.NODE_ENV !== 'development' && terser()),
   ],
 };
+
+// Conditionally minify unless we're in 'development'
+if (process.env.NODE_ENV !== 'development') {
+  rollupConfig.plugins.push(
+    terser(),
+  );
+}
 
 // Conditionally also build a CommonJS module to support
 // automated testing via nodejs
