@@ -18,7 +18,7 @@ From the command line:
 
     npm run test
 
-View your local copy of [index.html](https://github.com/aprothman/js-blip/blob/main/index.html) on a web server (such as the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) plugin for [VSCode](https://code.visualstudio.com/)) to see how the bundled library API might be consumed in a production environment.
+View your local copy of [index.html](https://github.com/aprothman/js-blip/blob/main/index.html) directly in a browser or on a web server (such as the [Live Server](https://marketplace.visualstudio.com/items?itemName=ritwickdey.LiveServer) plugin for [VSCode](https://code.visualstudio.com/)) to see how the bundled library API might be consumed in a production environment.
 
 ## Underlying Principles
 
@@ -62,3 +62,9 @@ It's important to cover all API exports with unit tests, but we're not worried a
 We define a CI workflow that's available on the GitHub Actions tab. The steps are laid out in [ci.yml](https://github.com/aprothman/js-blip/blob/main/.github/workflows/ci.yml). On every push or pull request, the default steps will be run, initializing the server environment and executing the build and test processes. If everything runs successfully, a link to the ES bundle output file (`JsBlip.js` in this case) is made available for download as a build artifact below each workflow result report.
 
 Additionally, when the CI workflow is selected on the Actions tab, a button is available to directly run the action with parameters. This will let you generate the output file on demand, optionally minifying it and also optionally skipping the unit tests.
+
+## Visual Studio Code Integration
+
+The [VSCode](https://code.visualstudio.com/) editor provides a number of tools that can integrate pretty well with this pattern. Aside from the obvious linting support, the [Tasks](https://code.visualstudio.com/docs/editor/tasks) feature allows us to quickly build and test our library. The [tasks.json](https://github.com/aprothman/js-blip/blob/main/.vscode/tasks.json) file contains definitions for two tasks that can be run from the Terminal menu, a build task and a test task. These will run our previously defined npm scripts in a local terminal window with the appropriate environment variables defined. In addition, the build task can be executed by the keyboard shortcut `Ctrl+Shift+B`.
+
+[VSCode](https://code.visualstudio.com/) also offers integrated debugging support for multiple browsers as well as support for directly launching the application from the [Run View](https://code.visualstudio.com/docs/editor/debugging#_run-view). To take advantage of the launch options in this template, be sure to install the degugger extensions for Firefox and Chrome. The Run menu or the launch button will then open [index.html](https://github.com/aprothman/js-blip/blob/main/index.html) in a browser while linking the source files in the code editor to that browser's debugger API.
