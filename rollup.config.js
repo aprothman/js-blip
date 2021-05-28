@@ -9,7 +9,7 @@ const rollupConfig = {
     {
       file: './build/JsBlip.js',
       format: 'es',
-      name: 'vcr-bundle',
+      name: 'blip-bundle',
     },
   ],
   plugins: [
